@@ -1,0 +1,75 @@
+<div class="col-sm-12">
+<div class="well">
+       
+<ol class="breadcrumb">
+  <li class="breadcrumb-item"><a href="#/">Home</a></li>
+  <li class="breadcrumb-item">King Wise Information</li>
+</ol>
+      </div>
+      <div class="well">
+        <h4>{{vm.id}}</h4>
+        <p>Some text..</p>
+      </div>
+      
+      <div class="row">
+        <div class="col-sm-3">
+          <div class="well">
+            <h4>Battle Wins</h4>
+            <p>{{vm.data.wins}}</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+            <h4> Battle Lost</h4>
+            <p>{{vm.data.losts}}</p> 
+          </div>
+        </div>
+        <div class="col-sm-3">
+          <div class="well">
+
+            <h4>Total Battles</h4>
+            <p>{{vm.data.wins+vm.data.losts}}</p> 
+          </div>
+        </div>
+       
+      </div>
+      <hr size=1 color="#eee"/>
+      Filter : <select ng-model="battle"> 
+          <option value=""> Select Battle Type</option>
+          <option ng-repeat="item in vm.kingInfo" value="{{item.battle_type}}"> {{item.battle_type}}</option>
+          </select>
+          <select ng-model="battleName"> 
+          <option value=""> Select Battle </option>
+          <option ng-repeat="item in vm.kingInfo" value="{{item.name}}"> {{item.name}}</option>
+          </select>
+        <hr size=1 color="#eee"/>
+
+      <div class="row">
+        <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Battle Name</th>
+        <th>Battle Type</th>
+        <th>Year</th>
+        <th>Att Commander</th>
+         <th>Def Commander</th>
+          <th>Location</th>
+           <th>Region</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in vm.kingInfo | filter:battle | filter:battleName">
+        <td>{{item.name}}</td>
+        <td>{{item.battle_type}}</td>
+        <td>{{item.year}}</td>
+        <td>{{item.attacker_commander}}</td>
+         <td>{{item.defender_commander}}</td>
+        <td>{{item.location}}</td>
+        <td>{{item.region}}</td>
+      </tr>
+     
+    </tbody>
+  </table>
+      </div>
+      
+</div>

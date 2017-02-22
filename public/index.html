@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <style>
+  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 550px}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      height: 100vh;
+    }
+    .kingsInput{
+          width: 100%;
+    padding: 10px;
+    background: red;
+    border: solid 3px #333;
+    color:white;
+    }
+    #footer{
+      position:absolute;
+      bottom:0px;
+      text-align: center;
+    }
+    .backgroundCss{
+       background: url(images/battle.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    }
+    ::-webkit-input-placeholder { /* Chrome */
+  color: white;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: white;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: white;
+  opacity: 1;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: white;
+  opacity: 1;
+}
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+}
+.nav>li>a:hover,.nav>li>a:active{
+  background: #3399ff;
+  color:white;
+}
+    @media (min-width: 768px){
+.col-sm-12 {
+    width: 100%;
+    height: 100vh;
+    margin-top: -20px;
+}
+    }
+  
+        
+    /* On small screens, set height to 'auto' for the grid */
+    @media screen and (max-width: 767px) {
+      .row.content {height: auto;} 
+    }
+  </style>
+</head>
+<body ng-controller="ProductsCtrl as vm">
+<nav class="navbar navbar-inverse visible-xs">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#"><img src="images/logo.png" alt="adp"/></a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Dashboard</a></li>
+        <li><a href="#">Age</a></li>
+        <li><a href="#">Gender</a></li>
+        <li><a href="#">Geo</a></li>
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row content">
+    <div class="col-sm-3 sidenav hidden-xs">
+      <h2><a href="#/"><img src="images/logo.png" alt="adp" style="width:350px"/></a></h2>
+      <ul class="nav nav-pills nav-stacked">
+        <li class="active"><input type="text" ng-model="search"  placeholder="Search Kings By Name.." class="kingsInput"/></li>
+        
+      </ul><br>
+      <ul class="nav nav-pills nav-stacked">
+        <li ng-repeat="item in vm.data | filter:search | orderBy:'name'"><a href="#king/{{item.name}}">{{item.name}}</a></li>
+      
+      </ul><br>
+      <ul class="nav navbar-nav">
+       
+        <li><a href="#elo">ELO Tool</a></li>
+
+        
+      </ul>
+      <div id="footer">
+  
+        <p class="muted credit">Example courtesy <a href="http://siddhu.info" target="_blank">{{vm.name}}</a>.</p>
+
+    </div>
+    </div>
+    <br>
+    
+    <div class="col-sm-9">
+
+      <div ng-view></div>
+   
+    </div>
+  </div>
+ 
+</div>
+
+ <script src="js/angular.min.js"></script>
+<script src="js/angular-route.min.js"></script>
+<script src="app/app.js"></script>
+<script src="app/products.js"></script>
+<script src="app/singleProduct.js"></script>
+<script src="app/kings.service.js"></script>
+<script src="app/elo.js"></script>
+<script src="app/angular-elo.js"></script>
+
+
+</body>
+</html>
+
